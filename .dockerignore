@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+*.session
+*.session-journal
+.git/
+test_app.py
+README.md
+DOCUMENTATION.md
+message.txt
+images/

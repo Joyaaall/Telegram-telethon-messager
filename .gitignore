@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+*.session
+*.session-journal
+*.tar.gz
+.DS_Store
+
+# Local captions and message images are intentionally excluded.
+message.txt
+images/*
+!images/.gitkeep
+!images/README.md

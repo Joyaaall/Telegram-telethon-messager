@@ -1,0 +1,28 @@
+services:
+  telethon-greeter:
+    build:
+      context: .
+    image: local/telethon-good-morning:1.0.0
+    container_name: telethon-good-morning
+    restart: unless-stopped
+    init: true
+    environment:
+      TELEGRAM_API_ID: ${TELEGRAM_API_ID}
+      TELEGRAM_API_HASH: ${TELEGRAM_API_HASH}
+      RECIPIENT_PHONE: ${RECIPIENT_PHONE:?Set RECIPIENT_PHONE in .env}
+      TZ: Asia/Kolkata
+    volumes:
+      - telegram-session:/data
+      - ./message.txt:/app/message.txt:ro
+      - ./images:/app/images:ro
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  telegram-session:
+    name: telethon-good-morning-session
